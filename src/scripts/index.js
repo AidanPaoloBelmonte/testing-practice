@@ -64,11 +64,29 @@ function caesarCipher(str, shift) {
   return newString;
 }
 
+function analyzeArray(arr) {
+  if (!Array.isArray(arr)) return null;
+
+  smallest = arr[0];
+  highest = arr[0];
+
+  arr.forEach((x) => {
+    smallest = Math.min(smallest, x);
+    highest = Math.max(highest, x);
+  });
+
+  return {
+    average: arr.reduce((total, x) => total + x, 0) / arr.length,
+    min: smallest,
+    max: highest,
+    length: arr.length,
+  };
+}
+
 module.exports = {
   capitalize: capitalize,
   reverse: reverse,
   calculator: calculator,
   caesarCipher: caesarCipher,
+  analyzeArray: analyzeArray,
 };
-
-console.log(caesarCipher("b", 1));
